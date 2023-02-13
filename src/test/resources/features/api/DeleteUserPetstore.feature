@@ -1,7 +1,6 @@
 #language:ru
 @test
 
-  #TODO: api_key
 
 Функционал: Тестирование сервиса PetStore
   - Удаление юзера DELETE запросом

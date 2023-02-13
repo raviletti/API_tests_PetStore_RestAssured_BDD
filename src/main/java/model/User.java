@@ -9,9 +9,6 @@ import java.util.Objects;
 
 public class User extends Body{
 
-
-
-    // todo: serialized поля, геттеры и сеттеры
     @SerializedName("id")
     private Integer id;
 

@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-/** Создание и проверка тикета */
 public class CreateUserTest extends BaseTest {
 
     /**

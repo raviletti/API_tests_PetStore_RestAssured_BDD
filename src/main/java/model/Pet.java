@@ -11,9 +11,6 @@ import java.util.Objects;
 
 public class Pet extends Body {
 
-
-
-    // todo: serialized поля, геттеры и сеттеры
     @SerializedName("id")
     private Integer id;
 
@@ -131,4 +128,3 @@ public class Pet extends Body {
     }
 }
 
-//id, title, status, priority, queue

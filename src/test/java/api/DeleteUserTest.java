@@ -1,14 +1,11 @@
 package api;
 
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import model.User;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-/** Создание и проверка тикета */
 public class DeleteUserTest extends BaseTest {
 
     /**
@@ -42,7 +39,6 @@ public class DeleteUserTest extends BaseTest {
      * @param username имя пользователя
      */
     protected ValidatableResponse getUser(String username) {
-        // todo: отправить HTTP запрос на получение тикета по его id
         return given()
                 .pathParam("username", username)
                 .when()

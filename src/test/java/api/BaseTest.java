@@ -44,7 +44,6 @@ public abstract class BaseTest {
      * @param id ИД создаваемого объекта
      */
     protected User buildNewUser(String username, int id) {
-        // todo: создать объект с тестовыми данными
         User user = new User();
         user.setId(id);
         user.setUsername(username);
@@ -61,7 +60,6 @@ public abstract class BaseTest {
      * @param user представление создаваемого пользователя в виде объекта
      */
     protected User createUser(User user) {
-        // todo: отправить HTTP запрос для создания тикета
         return given()
                 .body(user)
                 .when()

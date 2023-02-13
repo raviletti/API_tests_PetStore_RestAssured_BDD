@@ -1,6 +1,6 @@
 package steps;
 
-import Utils.ApiUtil;
+import Utils.CompareUtil;
 import Utils.CustomContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
@@ -21,12 +21,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class ApiSteps {
-    //TODO: вынести методы в отдельные классы
+    //TODO: вынести сложные методы в отдельные классы
     ApiRequest apiRequest;
     CustomContext context;
     @Before
     public void prepare() throws IOException {
-        // todo: загрузить в системные переменные "base.uri" из "config.properties"
         System.getProperties().load(ClassLoader.getSystemResourceAsStream("config.properties"));
         String baseUri = System.getProperty("base.uri");
         if (baseUri == null || baseUri.isEmpty()) {
@@ -103,15 +102,14 @@ public class ApiSteps {
 
     @И("сравнить значения")
     public void compareValue(DataTable dataTable) {
-
         for(List<String> columns : dataTable.asLists()){
-            //TODO: Упростить логику
+            //TODO: Упростить логику, или перенести в CompareUtil
             Object expected = columns.get(0).startsWith("${") ? context.getData(columns.get(0).substring(columns.get(0).indexOf("{")+1, columns.get(0).length()-1)) : columns.get(0);
             System.out.println("expected " + expected + " " +  columns.get(0));
             Object actual = columns.get(2).startsWith("${") ? context.getData(columns.get(2).substring(columns.get(2).indexOf("{")+1, columns.get(2).length()-1)) : columns.get(2);
             System.out.println("actual " + actual + " " +  columns.get(2));
             System.out.println("COMPARE: " + expected  + " " + columns.get(1)  + " " + actual + " ?");
-            boolean res = new ApiUtil().compareData(expected, columns.get(1), actual);
+            boolean res = new CompareUtil().compareData(expected, columns.get(1), actual);
             System.out.println(res);
             Assert.assertTrue(res);
         }
